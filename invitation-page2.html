@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitation — Junior & Ketsia</title>
+
+<link rel="stylesheet" href="invitation-page2.css">
+
+</head>
+<body>
+
+<section class="invitation-page">
+
+    <div class="invitation-wrap">
+
+        <img src="invitation.jpg"
+             alt="Invitation officielle"
+             class="invitation-img">
+
+        <div class="actions">
+
+            <button
+                class="btn-action btn-confirm"
+                onclick="showForm()">
+                ✓ Confirmer la présence
+            </button>
+
+            <a class="btn-action btn-map"
+               href="https://www.google.com/maps"
+               target="_blank">
+                📍 Voir le lieu
+            </a>
+
+            <a class="btn-action btn-cal"
+               href="https://calendar.google.com"
+               target="_blank">
+                📅 Ajouter au calendrier
+            </a>
+
+        </div>
+
+        <!-- POPUP -->
+
+        <div id="rsvpModal" class="modal">
+
+            <div class="modal-content">
+
+                <span class="close" onclick="closeForm()">
+                    &times;
+                </span>
+
+                <h2>Confirmer votre présence</h2>
+
+                <p class="subtitle">
+                    21 Juin 2026 — Junior & Ketsia Kabanga
+                </p>
+
+                <label>Nom complet</label>
+
+                <input
+                    type="text"
+                    id="nom"
+                    placeholder="Votre nom complet">
+
+                <label>Nombre d'invités</label>
+
+                <input
+                    type="number"
+                    id="invites"
+                    min="1"
+                    value="1">
+
+                <label>Message pour les mariés</label>
+
+                <textarea
+                    id="message"
+                    rows="4"
+                    placeholder="Votre message"></textarea>
+
+                <button
+                    class="btn-confirm-send"
+                    onclick="sendWhatsApp()">
+                    CONFIRMER MA PRÉSENCE
+                </button>
+
+            </div>
+
+        </div>
+
+        <p class="footer">
+            Code invitation :
+            <strong id="codeLabel">JKKAB2026</strong>
+        </p>
+
+    </div>
+
+</section>
+
+<script>
+
+// Ouvrir le formulaire
+function showForm() {
+
+    const modal = document.getElementById("rsvpModal");
+
+    if(modal){
+        modal.style.display = "flex";
+    }else{
+        alert("Erreur : formulaire introuvable");
+    }
+}
+
+// Fermer le formulaire
+function closeForm() {
+    document.getElementById("rsvpModal").style.display = "none";
+}
+
+// Envoyer vers WhatsApp
+function sendWhatsApp() {
+
+    const nom =
+        document.getElementById("nom").value.trim();
+
+    const invites =
+        document.getElementById("invites").value.trim();
+
+    const message =
+        document.getElementById("message").value.trim();
+
+    if(nom === ""){
+
+        alert("Veuillez saisir votre nom.");
+
+        return;
+    }
+
+    const texte =
+`💒 CONFIRMATION DE PRÉSENCE
+
+👤 Nom complet : ${nom}
+
+👥 Nombre d'invités : ${invites}
+
+💌 Message :
+${message}`;
+
+    const numero = "243997722976";
+
+    const lien =
+`https://wa.me/${numero}?text=${encodeURIComponent(texte)}`;
+
+    window.open(lien, "_blank");
+
+    closeForm();
+}
+
+// Fermer en cliquant hors du popup
+window.onclick = function(event){
+
+    const modal =
+        document.getElementById("rsvpModal");
+
+    if(event.target === modal){
+
+        closeForm();
+    }
+};
+
+// Personnalisation du code
+const params =
+    new URLSearchParams(window.location.search);
+
+const code =
+    params.get("code");
+
+if(code){
+
+    document.getElementById("codeLabel").textContent =
+        code;
+}
+
+</script>
+
+</body>
+</html>

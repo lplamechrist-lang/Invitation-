@@ -1,0 +1,193 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: #fcfbf8;
+  color: #3a2a1a;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ PAGE 1 - SAVE THE DATE ============ */
+.intro {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background-image:
+    linear-gradient(rgba(255,248,240,0.55), rgba(255,235,220,0.65)),
+    url('rings.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  text-align: center;
+}
+
+.kicker {
+  color: #b8860b;
+  letter-spacing: 0.3em;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  margin-bottom: 1rem;
+}
+
+.couple {
+  font-family: 'Great Vibes', cursive;
+  color: #8b2a2a;
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1;
+  font-weight: 400;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  width: 130px;
+  height: 1px;
+  background: rgba(184,134,11,0.5);
+  margin: 0 auto 2rem;
+}
+
+.lead {
+  font-style: italic;
+  color: #5a3a2a;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  color: #3a2a1a;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.8vw, 1.6rem);
+  margin-bottom: 2.5rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(90deg, #c9302c, #8b2a2a, #5a1818);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 1rem 2.5rem;
+  font-weight: 600;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0 20px 40px -10px rgba(139,42,42,0.5);
+  transition: transform .25s ease, box-shadow .25s ease;
+  font-family: inherit;
+}
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px -10px rgba(139,42,42,0.7);
+}
+.btn-primary:active { transform: scale(0.97); }
+.btn-primary span { transition: transform .25s ease; }
+.btn-primary:hover span { transform: translateX(4px); }
+
+/* Floating hearts */
+.hearts {
+  position: absolute; inset: 0;
+  overflow: hidden; pointer-events: none;
+}
+.hearts span {
+  position: absolute;
+  color: rgba(201,48,44,0.3);
+  font-size: 1.8rem;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+.hearts span:nth-child(2) { animation-delay: .4s; }
+.hearts span:nth-child(3) { animation-delay: .8s; }
+.hearts span:nth-child(4) { animation-delay: 1.2s; }
+.hearts span:nth-child(5) { animation-delay: 1.6s; }
+.hearts span:nth-child(6) { animation-delay: 2s; }
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50%     { opacity: 0.7; transform: scale(1.15); }
+}
+
+/* ============ PAGE 2 - INVITATION ============ */
+.invitation-page {
+  min-height: 100vh;
+  padding: 2.5rem 1rem;
+  background: linear-gradient(180deg, #fff8f0 0%, #fbeede 50%, #f5e6d3 100%);
+}
+.invitation-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.invitation-img {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+  outline: 1px solid rgba(184,134,11,0.3);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+@media (min-width: 640px) {
+  .actions { grid-template-columns: repeat(3, 1fr); }
+}
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 10px 20px -8px rgba(0,0,0,0.25);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+}
+.btn-action:hover { transform: scale(1.02); }
+.btn-action:active { transform: scale(0.97); }
+
+.btn-confirm {
+  background: linear-gradient(90deg, #c9302c, #8b2a2a);
+  color: #fff;
+}
+.btn-confirm.confirmed {
+  background: #059669;
+  cursor: default;
+}
+.btn-map {
+  background: #fff;
+  color: #8b2a2a;
+  border: 2px solid #8b2a2a;
+}
+.btn-map:hover { background: #8b2a2a; color: #fff; }
+.btn-cal {
+  background: linear-gradient(90deg, #b8860b, #8b6508);
+  color: #fff;
+}
+
+.confirm-msg {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #047857;
+  font-weight: 500;
+}
+
+.footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #7a5a3a;
+}
